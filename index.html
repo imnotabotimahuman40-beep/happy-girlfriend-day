@@ -1,72 +1,711 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Happy Girlfriend's Day ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ananya ❤️</title>
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#ff9ec4,#ffd6e8);
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-text-align:center;
-color:white;
-overflow:hidden;
+  font-family:'Poppins',sans-serif;
+  min-height:100vh;
+  overflow:hidden;
+  color:white;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3,#8e44ad);
 }
-.container{
-background:rgba(255,255,255,.15);
-padding:30px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-box-shadow:0 0 30px rgba(0,0,0,.2);
-max-width:350px;
+
+/* ---------- BACKGROUND ---------- */
+
+.bg{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
 }
-h1{font-size:32px;}
+
+.heart,
+.petal,
+.sparkle{
+  position:absolute;
+  pointer-events:none;
+}
+
+.heart{
+  animation:floatUp linear forwards;
+  opacity:.8;
+}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(110vh) rotate(0deg);
+    opacity:0;
+  }
+  15%{opacity:.8;}
+  100%{
+    transform:translateY(-15vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+.petal{
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  0%{
+    transform:translateY(-10vh) rotate(0deg);
+    opacity:0;
+  }
+  15%{opacity:.9;}
+  100%{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+.sparkle{
+  width:5px;
+  height:5px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 12px white;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.2;transform:scale(.5);}
+  to{opacity:1;transform:scale(1.5);}
+}
+
+/* ---------- PAGES ---------- */
+
+.page{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  opacity:0;
+  visibility:hidden;
+  transform:scale(1.05);
+  transition:1s ease;
+  z-index:2;
+}
+
+.page.active{
+  opacity:1;
+  visibility:visible;
+  transform:scale(1);
+}
+
+/* ---------- GLASS CARD ---------- */
+
+.card{
+  width:min(420px,100%);
+  padding:40px 25px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-radius:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
+  animation:pulse 4s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{box-shadow:0 20px 60px rgba(0,0,0,.2);}
+  50%{box-shadow:0 20px 70px rgba(255,255,255,.25);}
+}
+
+h1{
+  font-family:'Dancing Script',cursive;
+  font-size:48px;
+  margin-bottom:12px;
+}
+
+h2{
+  font-family:'Dancing Script',cursive;
+  font-size:38px;
+  margin-bottom:20px;
+}
+
+.subtitle{
+  font-size:15px;
+  line-height:1.7;
+  opacity:.9;
+  margin-bottom:30px;
+}
+
+/* ---------- BUTTON ---------- */
+
 button{
-padding:12px 25px;
-border:none;
-border-radius:30px;
-font-size:18px;
-cursor:pointer;
-background:white;
-color:#ff4081;
-margin-top:20px;
+  border:none;
+  padding:15px 25px;
+  border-radius:50px;
+  color:white;
+  font-family:'Poppins',sans-serif;
+  font-size:15px;
+  font-weight:500;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff416c,#ff4b8b);
+  box-shadow:0 10px 30px rgba(255,65,108,.35);
+  transition:.3s;
 }
-#msg{
-display:none;
-margin-top:20px;
-font-size:18px;
-line-height:1.6;
+
+button:hover{
+  transform:translateY(-3px) scale(1.03);
+}
+
+button:active{
+  transform:scale(.96);
+}
+
+.music{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:10;
+  width:48px;
+  height:48px;
+  padding:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+}
+
+/* ---------- LETTER ---------- */
+
+.letter{
+  min-height:170px;
+  font-family:'Dancing Script',cursive;
+  font-size:24px;
+  line-height:1.7;
+  text-align:left;
+  white-space:pre-line;
+}
+
+.cursor{
+  border-right:2px solid white;
+  animation:blink .7s infinite;
+}
+
+@keyframes blink{
+  50%{border-color:transparent;}
+}
+
+/* ---------- PHOTOS ---------- */
+
+.photo-box{
+  width:100%;
+  height:230px;
+  border-radius:20px;
+  overflow:hidden;
+  margin:20px 0;
+  background:rgba(255,255,255,.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.photo-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.photo-placeholder{
+  padding:20px;
+  opacity:.8;
+  font-size:14px;
+}
+
+/* ---------- FINAL ---------- */
+
+.final-title{
+  font-size:52px;
+  text-shadow:0 0 25px rgba(255,255,255,.7);
+}
+
+.forever{
+  margin-top:25px;
+  font-family:'Dancing Script',cursive;
+  font-size:30px;
+}
+
+#fireworks{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:20;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:480px){
+  h1{font-size:42px;}
+  h2{font-size:34px;}
+  .card{padding:32px 20px;}
+  .letter{font-size:22px;}
+  .final-title{font-size:43px;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-<h1>Happy Girlfriend's Day ❤️</h1>
-<h2>Ananya 🌸</h2>
+<div class="bg" id="bg"></div>
 
-<p>From your forever person,<br><b>Sumedh</b></p>
+<button class="music" id="musicBtn">🎵</button>
 
-<button onclick="showLove()">Open My Heart 💖</button>
+<canvas id="fireworks"></canvas>
 
-<div id="msg">
-You are the most beautiful part of my life. ❤️<br><br>
-Every smile of yours makes my day brighter.<br><br>
-Thank you for always being you.<br><br>
-Happy Girlfriend's Day, my love. 🌹<br><br>
-I Love You Forever ♾️❤️
-</div>
-</div>
+<!-- PAGE 1 -->
+
+<section class="page active" id="page1">
+
+  <div class="card">
+
+    <div style="font-size:55px;margin-bottom:10px;">💗</div>
+
+    <h1>For Ananya</h1>
+
+    <p class="subtitle">
+      I made something special for you...<br>
+      because you deserve more than just a message. ❤️
+    </p>
+
+    <button onclick="openHeart()">
+      Open My Heart 💖
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section class="page" id="page2">
+
+  <div class="card">
+
+    <h2 id="letterTitle"></h2>
+
+    <div class="letter">
+      <span id="typing"></span><span class="cursor">&nbsp;</span>
+    </div>
+
+    <button id="galleryBtn" onclick="showGallery()" style="display:none;margin-top:20px;">
+      See Our Memories 📸
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- PAGE 3 -->
+
+<section class="page" id="page3">
+
+  <div class="card">
+
+    <h2>Our Little Memories 📸</h2>
+
+    <div class="photo-box">
+
+      <!-- Replace these image URLs with your own photos -->
+
+      <img id="slide"
+      src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80">
+
+    </div>
+
+    <p id="photoText" style="margin-bottom:20px;">
+      A beautiful memory ❤️
+    </p>
+
+    <button onclick="nextPhoto()">
+      Next Memory 💕
+    </button>
+
+    <br><br>
+
+    <button onclick="finalSurprise()">
+      One Last Surprise 🎁
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- FINAL PAGE -->
+
+<section class="page" id="page4">
+
+  <div class="card">
+
+    <div style="font-size:65px;">💍</div>
+
+    <h1 class="final-title">
+      I Love You,<br>
+      Ananya ❤️
+    </h1>
+
+    <p class="subtitle" style="margin-top:20px;">
+      No matter what happens, I promise to choose you
+      every single day.<br><br>
+      Forever yours, Sumedh 💖
+    </p>
+
+    <div class="forever">
+      Together Forever ♾️
+    </div>
+
+  </div>
+
+</section>
+
 
 <script>
-function showLove(){
-document.getElementById("msg").style.display="block";
+
+/* =========================
+   BACKGROUND ANIMATIONS
+========================= */
+
+const bg = document.getElementById("bg");
+
+function createHeart(){
+
+  const heart=document.createElement("div");
+
+  heart.className="heart";
+  heart.innerHTML=["❤️","💗","💕","💖","💘"][Math.floor(Math.random()*5)];
+
+  heart.style.left=Math.random()*100+"%";
+  heart.style.fontSize=(12+Math.random()*25)+"px";
+  heart.style.animationDuration=(5+Math.random()*7)+"s";
+
+  bg.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),13000);
 }
+
+function createPetal(){
+
+  const petal=document.createElement("div");
+
+  petal.className="petal";
+  petal.innerHTML="🌹";
+
+  petal.style.left=Math.random()*100+"%";
+  petal.style.fontSize=(12+Math.random()*15)+"px";
+  petal.style.animationDuration=(6+Math.random()*7)+"s";
+
+  bg.appendChild(petal);
+
+  setTimeout(()=>petal.remove(),14000);
+}
+
+function createSparkle(){
+
+  const sparkle=document.createElement("div");
+
+  sparkle.className="sparkle";
+
+  sparkle.style.left=Math.random()*100+"%";
+  sparkle.style.top=Math.random()*100+"%";
+
+  bg.appendChild(sparkle);
+
+  setTimeout(()=>sparkle.remove(),3000);
+}
+
+setInterval(createHeart,500);
+setInterval(createPetal,1200);
+setInterval(createSparkle,300);
+
+
+/* =========================
+   PAGE CONTROL
+========================= */
+
+function changePage(number){
+
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+  });
+
+  document.getElementById("page"+number).classList.add("active");
+}
+
+
+/* =========================
+   PAGE 1 → PAGE 2
+========================= */
+
+function openHeart(){
+
+  changePage(2);
+
+  typeLetter();
+
+}
+
+
+/* =========================
+   TYPING LETTER
+========================= */
+
+const messages = [
+  "Dear Ananya ❤️",
+  "",
+  "Every moment with you feels magical...",
+  "",
+  "You are my happiness, my peace, and my favorite person.",
+  "",
+  "Happy Girlfriend's Day, my love.",
+  "Thank you for making my life beautiful. 💕"
+];
+
+let messageIndex=0;
+let charIndex=0;
+
+const typing=document.getElementById("typing");
+
+function typeLetter(){
+
+  if(messageIndex>=messages.length){
+
+    document.getElementById("galleryBtn").style.display="inline-block";
+    return;
+
+  }
+
+  let current=messages[messageIndex];
+
+  if(charIndex<current.length){
+
+    typing.textContent+=current.charAt(charIndex);
+
+    charIndex++;
+
+    setTimeout(typeLetter,45);
+
+  }else{
+
+    typing.textContent+="\n";
+
+    messageIndex++;
+    charIndex=0;
+
+    setTimeout(typeLetter,500);
+
+  }
+
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+const photos=[
+
+  "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80",
+
+  "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80",
+
+  "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=800&q=80",
+
+  "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80"
+
+];
+
+const captions=[
+
+  "A beautiful memory ❤️",
+  "You make everything brighter ✨",
+  "Just you and me 💕",
+  "My favorite person 💖"
+
+];
+
+let photoIndex=0;
+
+function showGallery(){
+
+  changePage(3);
+
+}
+
+function nextPhoto(){
+
+  photoIndex++;
+
+  if(photoIndex>=photos.length){
+    photoIndex=0;
+  }
+
+  document.getElementById("slide").src=photos[photoIndex];
+
+  document.getElementById("photoText").textContent=captions[photoIndex];
+
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+let musicPlaying=false;
+
+const musicBtn=document.getElementById("musicBtn");
+
+/*
+  IMPORTANT:
+  Browsers block websites from automatically
+  playing music.
+
+  Later, we can add YOUR music file here.
+*/
+
+musicBtn.onclick=()=>{
+
+  musicPlaying=!musicPlaying;
+
+  musicBtn.textContent=musicPlaying ? "🔊" : "🎵";
+
+};
+
+
+/* =========================
+   FINAL SURPRISE
+========================= */
+
+function finalSurprise(){
+
+  changePage(4);
+
+  startFireworks();
+
+}
+
+
+/* =========================
+   FIREWORKS
+========================= */
+
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+
+let particles=[];
+
+function resizeCanvas(){
+
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize",resizeCanvas);
+
+function createFirework(x,y){
+
+  for(let i=0;i<70;i++){
+
+    const angle=Math.random()*Math.PI*2;
+    const speed=2+Math.random()*6;
+
+    particles.push({
+
+      x:x,
+      y:y,
+
+      vx:Math.cos(angle)*speed,
+      vy:Math.sin(angle)*speed,
+
+      life:80,
+
+      size:2+Math.random()*3
+
+    });
+
+  }
+
+}
+
+function animateFireworks(){
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach((p,index)=>{
+
+    p.x+=p.vx;
+    p.y+=p.vy;
+
+    p.vy+=0.04;
+
+    p.life--;
+
+    ctx.beginPath();
+
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+
+    ctx.fillStyle="rgba(255,255,255,"+(p.life/80)+")";
+
+    ctx.fill();
+
+    if(p.life<=0){
+
+      particles.splice(index,1);
+
+    }
+
+  });
+
+  requestAnimationFrame(animateFireworks);
+
+}
+
+function startFireworks(){
+
+  animateFireworks();
+
+  let count=0;
+
+  const interval=setInterval(()=>{
+
+    createFirework(
+      Math.random()*canvas.width,
+      100+Math.random()*canvas.height*.5
+    );
+
+    count++;
+
+    if(count>15){
+      clearInterval(interval);
+    }
+
+  },500);
+
+}
+
 </script>
 
 </body>
-</html>
+  </html>
